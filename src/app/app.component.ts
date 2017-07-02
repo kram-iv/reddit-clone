@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component ({
   selector: 'app-sidebar',
@@ -11,15 +11,18 @@ export class SidebarComponent {}
 
 @Component ({
   selector: 'app-article',
-  template:`
+  template: `
       <div id="content">
         <div>
-          Article list will go here.
+          <h2> {{ article.title }} </h2>
         </div>
       </div>
     `
 })
-export class ArticleComponent {}
+
+export class ArticleComponent {
+  @Input('article') article: Object;
+}
 
 @Component({
   selector: 'app-root',
@@ -27,7 +30,7 @@ export class ArticleComponent {}
   template: `
     <div id="container">
       <app-sidebar></app-sidebar>
-      <app-article></app-article>
+      <app-article [article] = "article">       </app-article>
     </div>   
              `,
   styleUrls: ['./app.component.css']

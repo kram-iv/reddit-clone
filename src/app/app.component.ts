@@ -21,8 +21,8 @@ class Article {
         Sidebar will go here
       </div>`
 })
-export class SidebarComponent {}
 
+export class SidebarComponent {}
 @Component ({
   selector: 'app-article',
   template: `
@@ -38,7 +38,6 @@ export class SidebarComponent {}
 export class ArticleComponent {
   @Input('article') article: Article;
 }
-
 @Component({
   selector: 'app-root',
   //templateUrl: './app.component.html',

@@ -13,6 +13,10 @@ class Article {
     //this.title = aTitle;
     //this.description = aDescription;
   }
+  
+  public date(): Date {
+    return new Date();
+  }
 }
 @Component ({
   selector: 'app-sidebar',
@@ -26,11 +30,30 @@ export class SidebarComponent {}
 @Component ({
   selector: 'app-article',
   template: `
-      <div id="content">
-        <div>
-          <h2> {{ article.title }} </h2>
+      <div class="image">
+        <img src="https://placekitten.com/g/400/300">
+      </div>
+      <div class="content">
+        <div class="header">
+          {{ article.title }}
+        </div>
+        <div class="meta">
+          Voting and votes will go here.
+        </div>
+        <div class="meta date">
+          {{ article.date() }}
+        </div>
+        <div class="meta description">
           <p> {{ article.description }} </p>
         </div>
+        <div class="extra">
+          <a
+            href="#"
+            target='_blank'
+            ui='ui right floated button primary'>
+            Read more
+            <i class='right chevron icon'></i>
+          </a>
       </div>
     `
 })
@@ -42,11 +65,13 @@ export class ArticleComponent {
   selector: 'app-root',
   //templateUrl: './app.component.html',
   template: `
-    <div id="container">
+    <div class="ui container">
       <app-sidebar></app-sidebar>
-      <app-article 
-        *ngFor="let article of articles"
-        [article] = "article">       </app-article>
+        <div class="ui divided items">
+          <app-article 
+            *ngFor="let article of articles"
+            [article] = "article"
+            class='item'>       </app-article>
     </div>   
              `,
   styleUrls: ['./app.component.css']
